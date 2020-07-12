@@ -10,7 +10,7 @@
 % 4. Lateral dynamics controller
 %       -for lower speed a kinematic lateral model and for higher
 %       speed a dynamic lateral model are being used
-%       -depending on the speed, a corresponding MPC controller is being used
+%       -depending on the model, a corresponding MPC controller is being used
 % 5. Implementation of the control signal
 %       -update of vehicle parameters
 % After this step the algorithm goes back to 2.
