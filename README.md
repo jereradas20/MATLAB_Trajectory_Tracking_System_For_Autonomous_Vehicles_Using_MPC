@@ -3,9 +3,9 @@ Trajectory Tracking System in Matlab using Driving Scenario Designer, YALMIP and
 
 - to run the software successfully, you need to install: 
 
-1. [MATLAB] (https://www.mathworks.com/downloads/)
+1. [MATLAB](https://www.mathworks.com/downloads/)
 
-2. [YALMIP] (https://yalmip.github.io/tutorial/installation/)
+2. [YALMIP](https://yalmip.github.io/tutorial/installation/)
 
 3. [IBM CPLEX solver](https://www.ibm.com/products/ilog-cplex-optimization-studio?mhsrc=ibmsearch_p&mhq=IBM%20ILOG%20CPLEX%20Optimization%20Studio%20V12.9.0)
 
