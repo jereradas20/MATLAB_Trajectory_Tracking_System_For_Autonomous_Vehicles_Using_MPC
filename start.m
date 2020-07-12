@@ -1,40 +1,39 @@
-%INICIJALIZACIJA PARAMETARA ZA GLAVNU SKRIPTU
+%% PARAMETER INITIALIZATION FOR THE MAIN SCRIPT
 
 
 clear all;
 
-%parametri petlje
+% loop parameters
 STOP=0;
-dt=0.2; %konstanta kasnjenja
 T=0;
 runtime=0;
 i=1;
-N=300; %kraj simulacije
+N=300; % terminal step
 
 
 
 
-%parametri longitudinalnog kotrolera
-v_x=0;
-a_x=0;
-v_x_t=0; %trenutna brzina
-a_x_t=0; %trenutna akceleracija
+% longitudinal controller parameters
+v_x=0; % new speed
+a_x=0; % new acceleration
+v_x_t=0; % current speed
+a_x_t=0; % current acceleration
 
 
 
-%parametri lateralnog kontrolera
-delta_f=0;
+% lateral controller parameters
+delta_f=0; %front wheel steering angle
 
 
-%parametri vozila
+% initial vehicle parameters
 
 YAW_0= 173.5;
 X_0= 72.1479; 
 Y_0= 104.2;
 V_0=0;
 
-xi_1 = zeros(4,1);% pocetno stanje
-xi_1_kin = zeros(3,1);% pocetno stanje kinemtièkog
+xi_1 = zeros(4,1);% initial lateral dynamic state
+xi_1_kin = zeros(3,1);% initial lateral kinematic state
 X=X_0;
 Y=Y_0;
 V_x=0;
@@ -42,7 +41,7 @@ V_y=0;
 YAW=YAW_0;
 
 
-%alokacija memorije
+% memory allocation
 is_dyn_ = zeros(N,1);
 is_kin_ = zeros(N,1);
 

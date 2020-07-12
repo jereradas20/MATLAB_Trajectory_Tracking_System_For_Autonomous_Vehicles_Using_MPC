@@ -1,33 +1,33 @@
-%varijable stanja
+% state variables
 Y = sym('Y','real');
 X = sym('X','real');
 yaw = sym('yaw','real');
 
-%varijable ulaza
+% input variable
 delta_f = sym('delta_f','real');
 
 
-%vektor stanja
+% state vector
 x = [X; Y; yaw];
 
-%vektor ulaza
+% input vector
 u = [delta_f];
 
-%parametri vozila
+% vehicle parameters
 l_f = 1.1;
 l_r = 1.58;
 
 % l_f = sym('l_f','real');
 % l_r = sym('l_r','real');
 
-%brzina koja se kasnije mijenja za referentnu
+% speed
 V = sym('V','real');
 
 
-%jednadzbe gibanja
+% equations of motion
 dX = V*cos(yaw);
 dY = V*sin(yaw);
-% uz aproksimaciju tan(delta_f)=delta_f
+% with approximation tan(delta_f)=delta_f
 dyaw = (V*delta_f)/(l_f+l_r);
 
 

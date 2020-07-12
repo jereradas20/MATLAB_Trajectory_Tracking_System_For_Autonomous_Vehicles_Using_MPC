@@ -1,10 +1,10 @@
 function [scenario, egoVehicle, scenario_ref_x, scenario_ref_y] = create_scenario()
-%% POSTAVLJANJE SCENARIJA
+%% SETTING THE SCENARIO
 
-%objekt scenaria
+% scenario object
 scenario = drivingScenario;
 
-% parametri ceste
+% road parameters
 roadCenters = 2*[0.51 -57.92 0;
     12.98 -58.1 0;
     26.68 -58.25 0;
@@ -28,22 +28,22 @@ road(scenario, roadCenters, 'Lanes', laneSpecification);
 
 
 
-% objekt vozila
+% vehicle object
 egoVehicle = vehicle(scenario, ...
     'ClassID', 1, ...
     'Length', 2.68, ...
     'Position', [5.9 -1.975*59.4 0]);
 
 
-%granice ceste
+% road boundaries
 rb = roadBoundaries(scenario);
 RB=cell2mat(rb);
 
-%koordinate središnje linije
+% centerline coordinates
 center_line_x=(RB(:,1)+wrev(RB(:,4)))/2;
 center_line_y=(RB(:,2)+wrev(RB(:,5)))/2;
 
-%koordinate reference na èitavoj cesti
+% reference coordinates
 scenario_ref_x=(center_line_x+RB(:,1))/2;
 scenario_ref_y=(center_line_y+RB(:,2))/2;
 

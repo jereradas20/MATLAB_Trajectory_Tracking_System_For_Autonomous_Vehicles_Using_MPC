@@ -1,7 +1,7 @@
-%% Scatter dijagram trajektorije
+%% trajectory scatter diagram
 scatter(vehicle_y_,vehicle_x_,50,v_x_,'filled','MarkerFaceAlpha',.75)
 colorbar
-legend('Trajektorija vozila')
+legend('Vehicle trajectory')
 test_x0=10;
 test_y0=10;
 width=750;
@@ -13,14 +13,14 @@ c = colorbar;
 c.Label.String = '{\it v_x}[m/s]';
 %(1:end-1,1)
 grid on
-%% inicijalni položaj
+%% scenario plot
 plot(scenario)
 hold on
 set(gcf,'color','w');
 hXLabel = xlabel('{\it X}[m]');
 hYLabel = ylabel('{\it Y}[m]');
 grid on
-%% Putanja i linije ceste
+%% plot of the vehicle path in regards to track lines 
 figure
 plot(vehicle_y_,vehicle_x_,'LineWidth',1)
 hold on
@@ -31,7 +31,7 @@ hold on
 plot(RB(:,2),RB(:,1),'LineWidth',1,'Color','k')
 hold on
 plot(RB(:,5),RB(:,4),'LineWidth',1,'Color','k')
-legend('Putanja vozila', 'Središnja linija','Krajnje linije');
+legend('Vehicle path', 'Centerline','Lane boundary');
 test_x0=10;
 test_y0=10;
 width=750;
@@ -40,13 +40,13 @@ set(gcf,'color','w','position',[test_x0,test_y0,width,height]);
 hXLabel = xlabel('{\it Y}[m]');
 hYLabel = ylabel('{\it X}[m]');
 grid on
-%% Putanja i referenca
+%% plot of the vehicle path in regards to the reference
 figure
 plot(vehicle_y_,vehicle_x_,'LineWidth',1)
 hold on
 plot(scenario_waypoints(1:end,2),scenario_waypoints(1:end,1),'LineWidth',1)
 hold on
-legend('Putanja vozila','Referenca putanje');
+legend('Vehicle path','Reference path');
 test_x0=10;
 test_y0=10;
 width=750;
@@ -55,13 +55,13 @@ set(gcf,'color','w','position',[test_x0,test_y0,width,height]);
 hXLabel = xlabel('{\it Y}[m]');
 hYLabel = ylabel('{\it X}[m]');
 grid on
-%% Prikaz kad se koristi kinematički a kada dinamički model
+%% at which step which lateral model is being used
 bar(is_kin_)
 hold on
 bar(is_dyn_)
 hold on
 ylim([-0.125 1.125]);
-legend('Korištenje kinematičkog modela','Korištenje dinamičkog modela');
+legend('Usage of the kinematic model','Usage of the dynamic model');
 hXLabel = xlabel('{\it k}');
 hYLabel = ylabel('ON/OFF');
 test_x0=10;
@@ -70,7 +70,7 @@ width=1000;
 height=200;
 set(gcf,'color','w','position',[test_x0,test_y0,width,height]);
 grid on
-%% delta_f_ - zakret prednjih kotača
+%% delta_f_ - Front wheel steering angle
 figure
 plot(delta_f_)
 % legend('\delta_f');
@@ -82,7 +82,7 @@ delta_min = -10*ones(size(delta_f_));
 plot(delta_min,'--','Color','r')
 hXLabel = xlabel('{\it k}');
 hYLabel = ylabel('{\it \delta_f}[^{o}]');
-hLegend = legend( 'Zakret prednjih kotača','Granice' );
+hLegend = legend( 'Front wheel steering angle','Constraints' );
 test_x0=10;
 test_y0=10;
 width=1000;
@@ -94,7 +94,7 @@ ylim([-15.5 15.5]);
 % xticks([0:1:10]);
 yticks([-10 -5 0 5 10]);
 grid on
-%% delta_delta_f_ - Promjena zakreta prednjih kotača
+%% delta_delta_f_ - Derivative of the front wheel steering angle
 figure
 plot(delta_delta_f_)
 hold on
@@ -106,7 +106,7 @@ plot(delta_min,'--','Color','r')
 hold on
 hXLabel = xlabel('{\it k}');
 hYLabel = ylabel('{\it \Delta\delta_f}[^{o}]');
-hLegend = legend( 'Promjena zakreta prednjih kotača','Granice');
+hLegend = legend( 'Derivative of the front wheel steering angle','Constraints');
 test_x0=10;
 test_y0=10;
 width=1000;
@@ -119,7 +119,7 @@ ylim([-10.5 10.5]);
 % yticks([-0.03:0.01:0.09]);
 grid on
 
-%% X_kin_i - Pozicija X kinematičkog modela
+%% X_kin_i - Position X of the kinematic model
 
 figure
 plot(X_kin_i_)
@@ -133,7 +133,7 @@ plot(X_min,'--','Color','r')
 hold on
 hXLabel = xlabel('{\it k}');
 hYLabel = ylabel('{\it X}[m]');
-hLegend = legend( 'Pozicija X kinematičkog modela','Granice');
+hLegend = legend( 'Position X of the kinematic model','Constraints');
 test_x0=10;
 test_y0=10;
 width=1000;
@@ -147,7 +147,7 @@ ylim([-2.25 2.25]);
 
 grid on
 
-%% Y_kin_i - Pozicija Y kinematičkog modela
+%% Y_kin_i - Position Y of the kinematic model
 
 figure
 plot(Y_kin_i_)
@@ -161,7 +161,7 @@ plot(Y_min,'--','Color','r')
 hold on
 hXLabel = xlabel('{\it k}');
 hYLabel = ylabel('{\it Y}[m]');
-hLegend = legend( 'Pozicija Y kinematičkog modela','Granice' );
+hLegend = legend( 'Position Y of the kinematic model','Constraints');
 test_x0=10;
 test_y0=10;
 width=1000;
@@ -174,7 +174,7 @@ ylim([-1.25 1.25]);
 % yticks([-0.03:0.01:0.09]);
 
 grid on
-%% YAW_kin_i - Orijentacija \psi kinematičkog modela
+%% YAW_kin_i - Orientation \psi of the kinematic model
 figure
 plot(YAW_kin_i_*180/pi)
 % legend('vehicle_x_');
@@ -187,7 +187,7 @@ plot(YAW_min,'--','Color','r')
 hold on
 hXLabel = xlabel('{\it k}');
 hYLabel = ylabel('{\it \psi}[^{o}]');
-hLegend = legend( 'Orijentacija \psi kinematičkog modela','Granice' );
+hLegend = legend( 'Orientation \psi of the kinematic model','Constraints' );
 test_x0=10;
 test_y0=10;
 width=1000;
@@ -199,7 +199,7 @@ ylim([-15.5 15.5]);
 % xticks([0:1:10]);
 yticks([-10 -7 0 7 10]);
 grid on
-%% y_i - Pozicija y dinamičkog modela
+%% y_i - Position y of the dynamic model
 
 figure
 plot(y_i_)
@@ -212,7 +212,7 @@ plot(y_i_min,'--','Color','r')
 hold on
 hXLabel = xlabel('{\it k}');
 hYLabel = ylabel('{\it y}[m]');
-hLegend = legend( 'Pozicija y dinamičkog modela' ,'Granice');
+hLegend = legend( 'Position y of the dynamic model' ,'Constraints');
 test_x0=10;
 test_y0=10;
 width=1000;
@@ -224,7 +224,7 @@ ylim([-1.25 1.25]);
 % xticks([0:1:10]);
 % yticks([-0.03:0.01:0.09]);
 grid on
-%% dot_y_i - Promjena pozicije y dinamičkog modela
+%% dot_y_i - Derivative of the y position of the dynamic model
 
 figure
 plot(dot_y_i_)
@@ -237,7 +237,7 @@ plot(dot_y_i_min,'--','Color','r')
 hold on
 hXLabel = xlabel('{\it k}');
 hYLabel = ylabel('{\it \Deltay}[m]');
-hLegend = legend( 'Promjena pozicije y dinamičkog modela' ,'Granice');
+hLegend = legend( 'Derivative of the y position of the dynamic model' ,'Constraints');
 test_x0=10;
 test_y0=10;
 width=1000;
@@ -249,7 +249,7 @@ ylim([-1.25 1.25]);
 % xticks([0:1:10]);
 % yticks([-0.03:0.01:0.09]);
 grid on
-%% yaw_i_ - Orijentacija \psi dinamičkog modela
+%% yaw_i_ - Orientation \psi of the dynamic model
 figure
 plot(yaw_i_*180/pi)
 hold on
@@ -261,7 +261,7 @@ plot(yaw_i_min,'--','Color','r')
 hold on
 hXLabel = xlabel('{\it k}');
 hYLabel = ylabel('{\it \psi}[^{o}]');
-hLegend = legend( 'Orijentacija \psi dinamičkog modela' ,'Granice');
+hLegend = legend( 'Orientation \psi of the dynamic model' ,'Constraints');
 test_x0=10;
 test_y0=10;
 width=1000;
@@ -273,7 +273,7 @@ ylim([-5.5 5.5]);
 % xticks([0:1:10]);
 yticks([-5 -3 0 3 5]);
 grid on
-%% dot_yaw_i_ - Promjena orijentacije \Delta\psi dinamičkog modela
+%% dot_yaw_i_ - Derivative of the \psi orientation of the dynamic model
 
 figure
 plot(dot_yaw_i_*180/pi)
@@ -286,7 +286,7 @@ plot(dot_yaw_i_min,'--','Color','r')
 hold on
 hXLabel = xlabel('{\it k}');
 hYLabel = ylabel('{\it \Delta\psi}[^{o}]');
-hLegend = legend( 'Promjena orijentacije \Delta\psi dinamičkog modela' ,'Granice');
+hLegend = legend( 'Derivative of the \psi orientation of the dynamic model' ,'Constraints');
 test_x0=10;
 test_y0=10;
 width=1000;
@@ -298,7 +298,7 @@ ylim([-5.5 5.5]);
 % xticks([0:1:10]);
 yticks([-5 -3 0 3 5]);
 grid on
-%% v_x_ - Brzina vozila
+%% v_x_ - Vehicle speed
 
 figure
 plot(v_x_)
@@ -311,7 +311,7 @@ plot(v_x_min,'--','Color','r')
 hold on
 hXLabel = xlabel('{\it k}');
 hYLabel = ylabel('{\it v}[m/s]');
-hLegend = legend( 'Brzina vozila' ,'Granice');
+hLegend = legend( 'Vehicle speed' ,'Constraints');
 test_x0=10;
 test_y0=10;
 width=1000;
@@ -323,7 +323,7 @@ ylim([-0.5 18.5]);
 % xticks([0:1:10]);
 yticks([0 3 6 9 12 15 18]);
 grid on
-%% a_x_ - Akceleracija vozila
+%% a_x_ - Vehicle acceleration
 
 figure
 plot(a_x_)
@@ -336,7 +336,7 @@ plot(a_x_min,'--','Color','r')
 hold on
 hXLabel = xlabel('{\it k}');
 hYLabel = ylabel('{\it a}[m/s^2]');
-hLegend = legend( 'Akceleracija vozila' ,'Granice');
+hLegend = legend( 'Vehicle acceleration' ,'Constraints');
 test_x0=10;
 test_y0=10;
 width=1000;
@@ -348,11 +348,11 @@ ylim([-5.5 3.5]);
 % xticks([0:1:10]);
 yticks([-5 -3 -1.5 0 1.5 3]);
 grid on
-%% Vrijeme trajanja svakog koraka
+%% Duration of each step
 bar(T_)
 hXLabel = xlabel('{\it k}');
 hYLabel = ylabel('{\it T}[s]');
-hLegend = legend( 'Vrijeme trajanja svakog koraka' );
+hLegend = legend( 'Duration of each step' );
 test_x0=10;
 test_y0=10;
 width=1000;

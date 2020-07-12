@@ -1,9 +1,9 @@
 function sensor = create_sensor(scenario)
-%IZRADA OBJEKTA SENZORA
+%% SETTING THE SENSOR
 
 
 profiles = actorProfiles(scenario);
-%parametri senzora
+% sensor object
 sensor = visionDetectionGenerator('SensorIndex', 1, ...
     'SensorLocation', [1.68 0], ...
     'MaxRange', 30, ...

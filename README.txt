@@ -1,17 +1,21 @@
-Projektiranje sustava autonomne vožnje u Matlab/Simulink okruženju - praktični dio rada
+Trajectory Tracking System in Matlab using Driving Scenario Designer, YALMIP and IBM CPLEX solver
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
--da bi se mogao uspješno pokrenuti program potrebno je instalirati: -MATLAB (https://www.mathworks.com/downloads/)
-								    -YALMIP (https://yalmip.github.io/tutorial/installation/)
-								    -IBM CPLEX solver(https://www.ibm.com/products/ilog-cplex-optimization-studio?mhsrc=ibmsearch_p&mhq=IBM%20ILOG%20CPLEX%20Optimization%20Studio%20V12.9.0)
+-to run the software successfully, you need to install:  -MATLAB (https://www.mathworks.com/downloads/)
+						         -YALMIP (https://yalmip.github.io/tutorial/installation/)
+						         -IBM CPLEX solver(https://www.ibm.com/products/ilog-cplex-optimization-studio?mhsrc=ibmsearch_p&mhq=IBM%20ILOG%20CPLEX%20Optimization%20Studio%20V12.9.0)
 
--pokretanjem skripte MAIN_LOOP pokreće se cijela simulacija autonomne vožnje
+-whole simulation starts when you run the "MAIN_SCRIPT" script
 
--sve skripte i funkcije opisane su komentarima
+-the program logic scheme can be seen in the "Trajectory_tracking_algorithm.png"
 
--učitavanjem RESULTS.mat workspace-a učitaju se dobiveni podaci koji su prikazani u pisanom dijelu rada
+-all scripts and functions are described in comments
 
--skriptom plotting_function možete pojedinačno provjeravati rezultate
+-in the "RESULTS.mat" workspace final results can be found
 
--detaljne o izvedbi autonomne vožnje možete pročitati u pisanom dijelu rada 
+-with the "plotting_function" you can check the results individually
+
+*NOTE: Because of the slow YALMIP response, you may need to run the script a few times to get good results.
+
+
 
