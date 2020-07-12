@@ -1,5 +1,5 @@
 # Trajectory Tracking System in Matlab 
-Trajectory Tracking System in Matlab using Driving Scenario Designer, YALMIP and IBM CPLEX solver
+Trajectory Tracking System using Matlab's Driving Scenario Designer, YALMIP and IBM CPLEX solver
 
 - to run the software successfully, you need to install: 
 
